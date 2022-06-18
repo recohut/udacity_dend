@@ -1,0 +1,21 @@
+version: 1
+task_definition:
+  ecs_network_mode: awsvpc
+  task_execution_role: ecsTaskExecutionRole
+  task_size:
+    cpu_limit: 2048
+    mem_limit: 8GB
+  services:
+    spark:
+      essential: true
+    spark-worker-1:
+      essential: true
+    spark-worker-2:
+      essential: true
+run_params:
+  network_configuration:
+    awsvpc_configuration:
+      subnets:
+        - subnet-0e1f8d8c5e3f9f955
+        - subnet-0789b2b6514cd0014
+      assign_public_ip: ENABLED
